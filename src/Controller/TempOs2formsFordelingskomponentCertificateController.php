@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace Drupal\temp_os2forms_fordelingskomponent\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Site\Settings;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Returns responses for temp_os2forms_fordelingskomponent routes.
@@ -18,6 +22,19 @@ final class TempOs2formsFordelingskomponentCertificateController extends Control
    * Builds the response.
    */
   public function __invoke(Request $request, string $_format): Response {
+    if ('sftp_public_key' === $_format) {
+      $path = Settings::get('temp_os2forms_fordelingskomponent')['sftp']['public_key_path'] ?? NULL;
+      if (empty($path)) {
+        throw new NotFoundHttpException();
+      }
+
+      return (new BinaryFileResponse($path))
+        ->setContentDisposition(
+          ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+          basename($path),
+        );
+    }
+
     // https://stackoverflow.com/a/29779341
     $host = $request->getHost();
     $get = stream_context_create(['ssl' => ['capture_peer_cert' => TRUE]]);
