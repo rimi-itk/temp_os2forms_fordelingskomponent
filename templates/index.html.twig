@@ -8,13 +8,12 @@
 </head>
 <body>
 
-
 {%- macro webservice_link(route, context) -%}
-  {% set url = url(route, options: {'path_processing': false}) %}
-  {# Convert URL to string#}
-  {% set url = render_var(url)~'' %}
+  {% set url = url(route, options: {path_processing: false}) %}
+  {# Convert URL to string #}
+  {% set url = render_var(url) ~ '' %}
   {% if context.basic_auth|default(null) %}
-    {% set url = url|replace({'://': '://'~(context.basic_auth|join(':'))~'@'}) %}
+    {% set url = url|replace({'://': '://' ~ (context.basic_auth|join(':')) ~ '@'}) %}
   {% endif %}
   <a href="{{ url }}">{{ url }}</a>
 {%- endmacro -%}
@@ -28,17 +27,17 @@
     <a href="{{ url }}">{{ text }}</a>
 {%- endmacro -%}
 <div class="container-fluid">
-    <h1>Fordelingskomponent-test</h1>
-
-    <p>
-        {{ _self.webservice_link('temp_os2forms_fordelingskomponent.sf2900_2_4_FordelingsobjektModtag', _context) }} implementerer <strong>på sigt</strong> eksemplet fra {{ _self.kom_godt_i_gang_link(', side 10–11', {fragment_query: {page: 10}}) }}.
-    </p>
+    <h1>Fordelingskomponent</h1>
 
     <p>
         {{ _self.webservice_link('temp_os2forms_fordelingskomponent.sf2900_2_4_FordelingskvitteringModtag', _context) }} implementerer <strong>på sigt</strong> eksemplet fra {{ _self.kom_godt_i_gang_link(', side 15', {fragment_query: {page: 15}}) }}.
     </p>
 
-    <hr/>
+  <p>
+    {{ _self.webservice_link('temp_os2forms_fordelingskomponent.sf2900_2_4_FordelingsobjektModtag', _context) }} implementerer <strong>på sigt</strong> eksemplet fra {{ _self.kom_godt_i_gang_link(', side 10–11', {fragment_query: {page: 10}}) }}.
+  </p>
+
+  <hr/>
 
     <h2>Certifikat</h2>
 
