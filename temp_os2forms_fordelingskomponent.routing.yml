@@ -1,0 +1,39 @@
+temp_os2forms_fordelingskomponent:
+  path: '/os2forms-fordelingskomponent'
+  defaults:
+    _title: 'Fordelingskomponent'
+    _controller: '\Drupal\temp_os2forms_fordelingskomponent\Controller\TempOs2formsController'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'
+
+temp_os2forms_fordelingskomponent.sf2900_2_4_FordelingskvitteringModtag:
+  path: '/os2forms-fordelingskomponent/sf2900/2.4/FordelingskvitteringModtag'
+  defaults:
+    _title: 'SF2900 2.4 FordelingskvitteringModtag'
+    _controller: '\Drupal\temp_os2forms_fordelingskomponent\Controller\TempOs2formsFordelingskomponentController'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'
+
+temp_os2forms_fordelingskomponent.sf2900_2_4_FordelingsobjektModtag:
+  path: '/os2forms-fordelingskomponent/sf2900/2.4/FordelingsobjektModtag'
+  defaults:
+    _title: 'SF2900 2.4 FordelingsobjektModtag'
+    _controller: '\Drupal\temp_os2forms_fordelingskomponent\Controller\TempOs2formsFordelingskomponentController'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'
+
+temp_os2forms_fordelingskomponent.temp_os2forms_fordelingskomponent_certificate:
+  path: '/temp-os2forms-fordelingskomponent/temp-os2forms-fordelingskomponent-certificate/{_format}'
+  defaults:
+    _title: 'Temp Os2forms Fordelingskomponent Certificate'
+    _controller: '\Drupal\temp_os2forms_fordelingskomponent\Controller\TempOs2formsFordelingskomponentCertificateController'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'

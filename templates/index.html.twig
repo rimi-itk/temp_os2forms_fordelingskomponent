@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title|default('Fordelingskomponent-test') }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+
+{%- macro webservice_link(route) -%}
+    {% set url = url(route, options: {'path_processing': false}) %}
+    {#% set url = url|replace({'://': '://mtls-'}) %#}
+    <a href="{{ url }}">{{ url }}</a>
+{%- endmacro -%}
+
+{%- macro kom_godt_i_gang_link(additional_text, options = {}) -%}
+    {% set url = 'https://docs.kombit.dk/latest/6376001a' %}
+    {% if options.fragment_query is defined %}
+        {% set url = url ~ '#' ~ options.fragment_query|url_encode %}
+    {% endif %}
+    {% set text = ('Kom godt i gang - Fordelingskomponenten' ~ additional_text|default(''))|trim %}
+    <a href="{{ url }}">{{ text }}</a>
+{%- endmacro -%}
+<div class="container-fluid">
+    <h1>Fordelingskomponent-test</h1>
+
+    <p>
+        {{ _self.webservice_link('temp_os2forms_fordelingskomponent.sf2900_2_4_FordelingsobjektModtag') }} implementerer <strong>på sigt</strong> eksemplet fra {{ _self.kom_godt_i_gang_link(', side 10–11', {fragment_query: {page: 10}}) }}.
+    </p>
+
+    <p>
+        {{ _self.webservice_link('temp_os2forms_fordelingskomponent.sf2900_2_4_FordelingskvitteringModtag') }} implementerer <strong>på sigt</strong> eksemplet fra {{ _self.kom_godt_i_gang_link(', side 15', {fragment_query: {page: 15}}) }}.
+    </p>
+
+    <hr/>
+
+    <h2>Certifikat</h2>
+
+    <p>Dette sites certifikat (som skal tilføjes et eller andet sted i “Administrationen”):
+        {% for _format in ['pem', 'txt', 'json'] %}
+        <a href="{{ path('temp_os2forms_fordelingskomponent.temp_os2forms_fordelingskomponent_certificate', {_format: _format}) }}">{{ _format }}</a>
+        {% endfor %}
+    </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+name: 'temp_os2forms_fordelingskomponent'
+type: module
+description: 'Temporary module for providing callback endpoints for sf2900'
+package: Custom
+core_version_requirement: ^10 || ^11
