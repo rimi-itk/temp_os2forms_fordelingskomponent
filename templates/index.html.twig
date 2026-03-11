@@ -29,6 +29,66 @@
 <div class="container-fluid">
     <h1>Fordelingskomponent</h1>
 
+    <style>
+      table {
+        th {
+          font-weight: normal;
+          font-style: italic;
+          max-width: 16em;
+        }
+        th[colspan] {
+          font-weight: bold;
+          font-style: normal;
+        }
+      }
+    </style>
+
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th colspan="3">Afsendersysteminformation</th>
+        </tr>
+        <tr>
+          <th>Navn på it-system på Serviceplatformen</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>SystemUUID for afsendersystemet</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>Endpoint for webservice til modtagelse af kvitteringer ”FordelingsKviteringsModtag” (også kaldt ”callback”)</th>
+          <td>
+            {{ _self.webservice_link('temp_os2forms_fordelingskomponent.sf2900_2_4_FordelingskvitteringModtag', _context) }}
+          </td>
+          <td>
+            <a class="btn btn-outline-success" href="{{ path('temp_os2forms_fordelingskomponent.temp_os2forms_fordelingskomponent_certificate', {_format: 'pem'}) }}">Download certifikat for endpoint</a>
+          </td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <th colspan="3">SFTP</th>
+        </tr>
+        <tr>
+          <th>Brugernavn</th>
+          <td>{{ sftp.username }}</td>
+        </tr>
+        <tr>
+          <th>Offentlig ssh-nøgle</th>
+          <td>
+            <a href="{{ sftp.public_key_url }}">{{ sftp.public_key_name }}</a>
+          </td>
+          <td>
+            <a class="btn btn-outline-success" href="{{ sftp.public_key_url }}">Download offentlig ssh-nøgle</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+{#
     <p>
         {{ _self.webservice_link('temp_os2forms_fordelingskomponent.sf2900_2_4_FordelingskvitteringModtag', _context) }} implementerer <strong>på sigt</strong> eksemplet fra {{ _self.kom_godt_i_gang_link(', side 15', {fragment_query: {page: 15}}) }}.
     </p>
@@ -58,6 +118,7 @@
       <dd><a href="{{ sftp.public_key_url }}">{{ sftp.public_key_name }}</a></dd>
     </dl>
   {% endif %}
+#}
 </div>
 </body>
 </html>
