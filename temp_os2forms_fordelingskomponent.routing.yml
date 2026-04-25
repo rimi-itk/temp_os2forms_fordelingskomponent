@@ -3,6 +3,7 @@ temp_os2forms_fordelingskomponent:
   defaults:
     _title: 'Fordelingskomponent'
     _controller: '\Drupal\temp_os2forms_fordelingskomponent\Controller\TempOs2formsController'
+  methods: [GET]
   requirements:
     _permission: 'access content'
   options:
@@ -13,6 +14,7 @@ temp_os2forms_fordelingskomponent.sf2900_2_4_FordelingskvitteringModtag:
   defaults:
     _title: 'SF2900 2.4 FordelingskvitteringModtag'
     _controller: '\Drupal\temp_os2forms_fordelingskomponent\Controller\TempOs2formsFordelingskomponentController'
+  methods: [GET]
   requirements:
     _permission: 'access content'
   options:
@@ -23,6 +25,7 @@ temp_os2forms_fordelingskomponent.sf2900_2_4_FordelingsobjektModtag:
   defaults:
     _title: 'SF2900 2.4 FordelingsobjektModtag'
     _controller: '\Drupal\temp_os2forms_fordelingskomponent\Controller\TempOs2formsFordelingskomponentController'
+  methods: [GET]
   requirements:
     _permission: 'access content'
   options:
@@ -33,6 +36,7 @@ temp_os2forms_fordelingskomponent.temp_os2forms_fordelingskomponent_certificate:
   defaults:
     _title: 'Temp Os2forms Fordelingskomponent Certificate'
     _controller: '\Drupal\temp_os2forms_fordelingskomponent\Controller\TempOs2formsFordelingskomponentCertificateController'
+  methods: [GET]
   requirements:
     _permission: 'access content'
   options:
